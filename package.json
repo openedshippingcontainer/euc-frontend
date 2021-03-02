@@ -1,0 +1,207 @@
+{
+  "name": "euc-frontend",
+  "version": "1.6.8",
+  "description": "A React frontend for eliteunitedcrew.org",
+  "private": true,
+  "engines": {
+    "node": ">=8",
+    "npm": ">=3"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead",
+    "maintained node versions"
+  ],
+  "scripts": {
+    "type-check": "tsc -p tsconfig.json -m \"es2020\" --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "dev": "webpack serve --config webpack.config.dev.ts --history-api-fallback --compress --hot --progress --color --port 3000",
+    "prod": "webpack serve --config webpack.config.prod.ts --history-api-fallback --compress --hot --progress --color --port 3001",
+    "lint": "esw src/ --ext \".ts,.tsx,.js,.jsx\" --color",
+    "lint:watch": "npm run lint -- --watch",
+    "clean-dist": "rimraf dist/ && mkdir dist",
+    "build": "npm run clean-dist && webpack --config webpack.config.prod.ts --progress --color",
+    "analyze-bundle": "rimraf analyze/ && mkdir analyze && webpack --config webpack.config.prod.ts --profile --json > analyze/stats.json && webpack-bundle-analyzer -O analyze/stats.json"
+  },
+  "author": "eliteunitedcrew.org",
+  "license": "UNLICENSE",
+  "dependencies": {
+    "baseui": "9.110.0",
+    "dompurify": "2.2.6",
+    "file-saver": "2.0.5",
+    "focus-options-polyfill": "1.6.0",
+    "lodash": "4.17.21",
+    "moment": "2.29.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-error-boundary": "3.1.0",
+    "react-query": "3.12.0",
+    "react-redux": "7.2.2",
+    "react-ridge-state": "4.1.6",
+    "react-router-dom": "5.2.0",
+    "react-uid": "2.3.1",
+    "react-use": "17.1.1",
+    "redux": "4.0.5",
+    "redux-thunk": "2.3.0",
+    "styletron-engine-atomic": "1.4.7",
+    "styletron-react": "6.0.0",
+    "typesafe-actions": "5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.13.1",
+    "@babel/plugin-proposal-class-properties": "7.13.0",
+    "@babel/plugin-transform-react-constant-elements": "7.12.13",
+    "@babel/plugin-transform-runtime": "7.13.7",
+    "@babel/preset-env": "7.13.5",
+    "@babel/preset-react": "7.12.13",
+    "@babel/preset-typescript": "7.13.0",
+    "@types/compression-webpack-plugin": "6.0.4",
+    "@types/copy-webpack-plugin": "6.4.0",
+    "@types/dompurify": "2.2.1",
+    "@types/file-saver": "2.0.1",
+    "@types/hard-source-webpack-plugin": "1.0.1",
+    "@types/history": "4.7.8",
+    "@types/lodash": "4.14.168",
+    "@types/moment-locales-webpack-plugin": "1.2.0",
+    "@types/node": "14.14.31",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.1",
+    "@types/react-redux": "7.1.16",
+    "@types/react-router": "5.1.11",
+    "@types/react-router-dom": "5.1.7",
+    "@types/redux-immutable-state-invariant": "2.1.1",
+    "@types/styletron-engine-atomic": "1.1.0",
+    "@types/styletron-react": "5.0.2",
+    "@types/styletron-standard": "2.0.1",
+    "@types/terser-webpack-plugin": "5.0.2",
+    "@typescript-eslint/eslint-plugin": "4.15.2",
+    "@typescript-eslint/parser": "4.15.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.2.2",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.24",
+    "compression-webpack-plugin": "7.1.2",
+    "copy-webpack-plugin": "7.0.0",
+    "eslint": "7.20.0",
+    "eslint-plugin-baseui": "9.110.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-react": "7.22.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-watch": "7.0.0",
+    "file-loader": "6.2.0",
+    "history": "5.0.0",
+    "html-webpack-plugin": "5.2.0",
+    "husky": "4.0.0",
+    "moment-locales-webpack-plugin": "1.2.0",
+    "redux-immutable-state-invariant": "2.1.0",
+    "terser-webpack-plugin": "5.1.1",
+    "ts-node": "9.1.1",
+    "typescript": "4.2.2",
+    "url-loader": "4.1.1",
+    "webpack": "5.24.2",
+    "webpack-bundle-analyzer": "4.4.0",
+    "webpack-cli": "4.5.0",
+    "webpack-dev-middleware": "4.1.0",
+    "webpack-dev-server": "3.11.2"
+  },
+  "keywords": [
+    "torrent",
+    "tracker",
+    "frontend",
+    "react",
+    "typescript",
+    "webpack",
+    "babel",
+    "baseweb",
+    "unlicense"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/refrigeratorstory/euc-frontend"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react",
+          "@babel/preset-typescript"
+        ],
+        "plugins": [
+          "@babel/plugin-transform-runtime",
+          "@babel/plugin-proposal-class-properties"
+        ]
+      },
+      "production": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react",
+          "@babel/preset-typescript"
+        ],
+        "plugins": [
+          "@babel/plugin-transform-runtime",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-transform-react-constant-elements",
+          "transform-react-remove-prop-types"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended"
+    ],
+    "plugins": [
+      "react",
+      "baseui",
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "baseui/deprecated-theme-api": "warn",
+      "baseui/deprecated-component-api": "warn",
+      "baseui/no-deep-imports": "warn",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-explicit-any": "off"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 11,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".ts",
+            ".tsx",
+            ".js",
+            ".jsx"
+          ]
+        }
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "jquery": false
+    },
+    "globals": {}
+  }
+}
